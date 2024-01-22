@@ -1,12 +1,8 @@
-import Link from "next/link";
 import React from "react";
+import Link from "next/link";
+import { ProductsType } from "@/types/hooks.types";
 
-type ProductCardType = {
-  category: string;
-  image: string;
-  title: string;
-  id: string;
-  price: number;
+type ProductCardType = Omit<ProductsType, "rating" | "description"> & {
   isLoading?: boolean;
 };
 

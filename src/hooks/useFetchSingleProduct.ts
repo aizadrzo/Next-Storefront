@@ -1,26 +1,14 @@
 import { useEffect, useState } from "react";
-
-type RatingType = {
-  count: number;
-  price: number;
-};
-
-export type ProductsType = {
-  category: string;
-  description: string;
-  id: string;
-  image: string;
-  price: number;
-  rating: RatingType;
-  title: string;
-};
+import { ProductsType } from "@/types/hooks.types";
 
 const useFetchSingleProduct = ({ id }: { id: string }) => {
   const [singleProduct, setSingleProduct] = useState<
     ProductsType | undefined
   >();
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchSingleProductData = async () => {
+    setIsLoading(true);
     try {
       const response = await fetch(
         `https://fakestoreapi.com/products/${id ?? 1}`
@@ -29,6 +17,8 @@ const useFetchSingleProduct = ({ id }: { id: string }) => {
       setSingleProduct(data);
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -36,7 +26,7 @@ const useFetchSingleProduct = ({ id }: { id: string }) => {
     fetchSingleProductData();
   }, [id]);
 
-  return { singleProduct };
+  return { isLoading, singleProduct };
 };
 
 export default useFetchSingleProduct;

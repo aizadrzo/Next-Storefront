@@ -1,19 +1,5 @@
 import { useState, useEffect } from "react";
-
-type RatingType = {
-  count: number;
-  price: number;
-};
-
-type ProductsType = {
-  category: string;
-  description: string;
-  id: string;
-  image: string;
-  price: number;
-  rating: RatingType;
-  title: string;
-};
+import { ProductsType } from "@/types/hooks.types";
 
 const useFetchProducts = () => {
   const [products, setProducts] = useState<ProductsType[] | undefined>([]);
