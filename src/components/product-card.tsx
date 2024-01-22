@@ -14,7 +14,7 @@ const ProductCard = ({
   price,
 }: ProductCardType) => {
   return (
-    <div className="card p-5" key={id}>
+    <div className="card p-5">
       <div className="border border-base-300 aspect-square grid place-content-center">
         <img src={image} alt={title} className="w-auto h-36" />
       </div>
@@ -26,6 +26,11 @@ const ProductCard = ({
           </h1>
         </Link>
         <h3 className="pt-3">${price}</h3>
+      </div>
+      <div className="card-action w-full mt-[38px]">
+        <button className="btn w-full btn-outline btn-secondary btn-md">
+          ADD TO CART
+        </button>
       </div>
     </div>
   );

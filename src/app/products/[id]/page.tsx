@@ -1,5 +1,7 @@
 "use client";
+import { SinglePageProduct } from "@/components";
 import { useFetchSingleProduct } from "@/hooks";
+import Link from "next/link";
 import React from "react";
 
 type ProductPage = {
@@ -9,23 +11,17 @@ type ProductPage = {
 const ProductPage = ({ params }: ProductPage) => {
   const { singleProduct } = useFetchSingleProduct({ id: params.id });
   return (
-    <main className="flex min-h-screen flex-col py-24 px-14">
-      <div className="flex flex-col lg:flex-row items-center justify-center gap-4">
-        <div className="border border-base-300 aspect-square grid place-content-center p-10">
-          <img
-            src={singleProduct?.image}
-            alt={singleProduct?.title}
-            className="w-auto h-[350px]"
-          />
-        </div>
-        <div className="flex flex-col gap-y-2">
-          <p className="uppercase text-sm text-gray-600">
-            {singleProduct?.category}
-          </p>
-          <h1 className="card-title">{singleProduct?.title}</h1>
-          <p className="w-2/3">{singleProduct?.description}</p>
-        </div>
-      </div>
+    <main className="flex min-h-screen flex-col px-5 lg:px-40 py-5">
+      <Link href="/" className="text-sm pb-[50px]">
+        Go back home
+      </Link>
+      <SinglePageProduct
+        image={singleProduct?.image}
+        title={singleProduct?.title}
+        description={singleProduct?.description}
+        price={singleProduct?.price}
+        rating={singleProduct?.rating}
+      />
     </main>
   );
 };
