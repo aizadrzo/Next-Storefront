@@ -15,7 +15,7 @@ type ProductsType = {
   title: string;
 };
 
-const useFetchAPI = () => {
+const useFetchProducts = () => {
   const [products, setProducts] = useState<ProductsType[] | undefined>([]);
 
   const fetchProductData = async () => {
@@ -36,4 +36,4 @@ const useFetchAPI = () => {
   return { products };
 };
 
-export default useFetchAPI;
+export default useFetchProducts;
