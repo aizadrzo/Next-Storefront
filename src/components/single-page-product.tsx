@@ -1,7 +1,7 @@
 import React from "react";
 import { ProductsType } from "@/types/hooks.types";
 
-type SingleProductPageProps = Exclude<ProductsType, "category" | "id">;
+type SingleProductPageProps = Partial<Exclude<ProductsType, "category" | "id">>;
 
 const SinglePageProduct = ({
   title,
