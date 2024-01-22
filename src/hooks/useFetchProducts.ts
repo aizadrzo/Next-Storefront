@@ -17,15 +17,18 @@ type ProductsType = {
 
 const useFetchProducts = () => {
   const [products, setProducts] = useState<ProductsType[] | undefined>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchProductData = async () => {
+    setIsLoading(true);
     try {
       const response = await fetch("https://fakestoreapi.com/products");
       const data = await response.json();
-      console.log("here", data);
       setProducts(data);
     } catch (error) {
       console.error("Error fetching product data:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -33,7 +36,7 @@ const useFetchProducts = () => {
     fetchProductData();
   }, []);
 
-  return { products };
+  return { isLoading, products };
 };
 
 export default useFetchProducts;
