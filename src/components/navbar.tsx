@@ -1,9 +1,10 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <nav className="navbar py-8 bg-base-100 sticky top-0 z-10">
+    <nav className="navbar py-4 sm:py-8 bg-base-100 sticky top-0 z-10">
       <div className="navbar-start"></div>
       <Link href="/">
         <h1 className="navbar-center text-xl font-bold">Random Store</h1>
@@ -11,9 +12,7 @@ const Navbar = () => {
       <div className="navbar-end">
         <Link href="/checkout">
           <div className="indicator">
-            <span className="indicator-item badge badge-xs badge-secondary py-2 rounded-full">
-              1
-            </span>
+            <span className="indicator-item badge badge-xs badge-secondary py-1 rounded-full"></span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

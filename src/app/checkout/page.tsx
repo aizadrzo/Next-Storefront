@@ -1,15 +1,12 @@
 "use client";
 import React from "react";
-import { useFetchCartItems } from "@/hooks";
+import { useCartContext } from "../Context/store";
 
 const Checkout = () => {
-  const { cartItems } = useFetchCartItems();
-  console.log(cartItems);
+  const { cartItems } = useCartContext();
+
   return (
     <div className="flex min-h-screen flex-col p-24">
-      <div className="flex items-center justify-between">
-        <h1>Checkout</h1>
-      </div>
       <div className="flex">
         {cartItems?.map((item) => (
           <div key={item?.productId}>
