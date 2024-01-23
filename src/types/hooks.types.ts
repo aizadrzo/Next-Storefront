@@ -12,3 +12,8 @@ export type ProductsType = {
   price: number;
   rating: RatingType;
 };
+
+export type CartItemType = {
+  productId: string;
+  quantity: number;
+};

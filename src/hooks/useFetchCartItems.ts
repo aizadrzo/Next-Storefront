@@ -1,12 +1,8 @@
 import { useState, useEffect } from "react";
-
-type CartItem = {
-  productId: number;
-  quantity: number;
-};
+import { CartItemType } from "@/types/hooks.types";
 
 const useFetchCartItems = () => {
-  const [cartItems, setCartItems] = useState<CartItem[] | undefined>([]);
+  const [cartItems, setCartItems] = useState<CartItemType[] | undefined>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchProductData = async () => {
