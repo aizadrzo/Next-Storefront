@@ -15,12 +15,14 @@ const ProductCard = ({
   id,
   price,
 }: ProductCardType) => {
-  const { addToCart } = useCartContext();
+  const { cartItems, addToCart } = useCartContext();
 
   const handleAddToCart = () => {
-    const itemToAdd = { productId: id, quantity: 1 };
+    const itemToAdd = { id, category, title, image, price, quantity: 1 };
     addToCart(itemToAdd);
   };
+
+  console.log(cartItems);
 
   return (
     <div className="w-full card">

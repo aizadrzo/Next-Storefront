@@ -4,7 +4,7 @@ import { QuantityInput } from ".";
 import { ProductsType } from "@/types/hooks.types";
 import { useCartContext } from "@/app/Context/store";
 
-type SingleProductPageProps = Partial<Exclude<ProductsType, "category">>;
+type SingleProductPageProps = Partial<ProductsType>;
 
 const SinglePageProduct = ({
   id,
@@ -13,14 +13,26 @@ const SinglePageProduct = ({
   image,
   price,
   rating,
+  category,
 }: SingleProductPageProps) => {
   const { cartItems, addToCart } = useCartContext();
   const [quantity, setQuantity] = useState(1);
 
+  useEffect(() => {
+    setQuantity(1);
+  }, []);
+
   console.log(cartItems);
 
   const handleAddToCart = () => {
-    const itemToAdd = { productId: id, quantity: quantity };
+    const itemToAdd = {
+      id,
+      category,
+      title,
+      image,
+      price,
+      quantity,
+    };
     addToCart(itemToAdd);
   };
 
@@ -35,10 +47,6 @@ const SinglePageProduct = ({
       setQuantity(quantity + 1);
     }
   };
-
-  useEffect(() => {
-    setQuantity(1);
-  }, []);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-[60px] items-start">

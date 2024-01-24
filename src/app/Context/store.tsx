@@ -1,13 +1,15 @@
 "use client";
 
 import { PropsWithChildren, createContext, useContext, useState } from "react";
-import { CartItemType } from "@/types/hooks.types";
+import { ProductsType } from "@/types/hooks.types";
+
+type CartItemType = Omit<ProductsType[], "rating" | "description">;
 
 type CartContextType = {
-  cartItems: CartItemType[];
+  cartItems: CartItemType | undefined;
   addToCart: (item: CartItemType) => void;
-  removeFromCart: (productId: string) => void;
-  updateQuantity: (productId: string, newQuantity: number) => void;
+  removeFromCart: (productId: ProductsType["id"]) => void;
+  updateQuantity: (productId: ProductsType["id"], newQuantity: number) => void;
 };
 
 const CartContext = createContext<CartContextType>({
@@ -18,22 +20,25 @@ const CartContext = createContext<CartContextType>({
 });
 
 export const CartProvider = ({ children }: PropsWithChildren) => {
-  const [cartItems, setCartItems] = useState<CartItemType[]>([]);
+  const [cartItems, setCartItems] = useState<CartContextType["cartItems"]>([]);
 
   const addToCart = (item: CartItemType) => {
     setCartItems((prevItems) => [...prevItems, item]);
   };
 
-  const removeFromCart = (productId: string) => {
+  const removeFromCart = (productId: ProductsType["id"]) => {
     setCartItems((prevItems) =>
-      prevItems.filter((item) => item.productId !== productId)
+      prevItems?.filter((item) => item.id !== productId)
     );
   };
 
-  const updateQuantity = (productId: string, newQuantity: number) => {
+  const updateQuantity = (
+    productId: ProductsType["id"],
+    newQuantity: number
+  ) => {
     setCartItems((prevItems) =>
-      prevItems.map((item) =>
-        item.productId === productId ? { ...item, quantity: newQuantity } : item
+      prevItems?.map((item) =>
+        item.id === productId ? { ...item, quantity: newQuantity } : item
       )
     );
   };
