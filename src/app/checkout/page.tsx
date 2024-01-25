@@ -6,7 +6,7 @@ import Link from "next/link";
 import { QuantityInput } from "@/components";
 
 const Checkout = () => {
-  const { cartItems, removeFromCart, updateQuantity } = useCartContext();
+  const { cartItems, removeFromCart } = useCartContext();
   const emptyCart = cartItems?.length === 0;
   const router = useRouter();
 
@@ -62,7 +62,7 @@ const Checkout = () => {
                 </h1>
               </Link>
               <p className="text-sm md:text-base text-neutral-500">
-                Price: ${item?.price}
+                Price: ${item?.price * item?.quantity}
               </p>
               <button
                 onClick={() => removeFromCart(item?.id)}
