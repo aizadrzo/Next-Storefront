@@ -1,6 +1,8 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 import { ProductsType } from "@/types/hooks.types";
+import { useCartContext } from "@/app/Context/store";
 
 type ProductCardType = Omit<ProductsType, "rating" | "description"> & {
   isLoading?: boolean;
@@ -13,6 +15,13 @@ const ProductCard = ({
   id,
   price,
 }: ProductCardType) => {
+  const { cartItems, addToCart } = useCartContext();
+
+  const handleAddToCart = () => {
+    const itemToAdd = { id, category, title, image, price, quantity: 1 };
+    addToCart(itemToAdd);
+  };
+
   return (
     <div className="w-full card">
       <div className="border border-base-300 aspect-square grid place-content-center">
@@ -31,7 +40,10 @@ const ProductCard = ({
           <h3 className="pt-5 text-base font-semibold">${price}</h3>
         </div>
         <div className="mt-auto card-actions">
-          <button className="btn w-full btn-outline btn-secondary btn-md">
+          <button
+            className="btn w-full btn-outline btn-secondary btn-md"
+            onClick={handleAddToCart}
+          >
             ADD TO CART
           </button>
         </div>

@@ -12,11 +12,13 @@ const ProductPage = ({ params }: ProductPage) => {
   return (
     <main className="grid place-content-center py-5">
       <SinglePageProduct
+        id={singleProduct?.id}
         image={singleProduct?.image}
         title={singleProduct?.title}
         description={singleProduct?.description}
         price={singleProduct?.price}
         rating={singleProduct?.rating}
+        category={singleProduct?.category}
       />
     </main>
   );

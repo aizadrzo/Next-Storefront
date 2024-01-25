@@ -1,18 +1,38 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { QuantityInput } from ".";
 import { ProductsType } from "@/types/hooks.types";
+import { useCartContext } from "@/app/Context/store";
 
-type SingleProductPageProps = Partial<Exclude<ProductsType, "category" | "id">>;
+type SingleProductPageProps = Partial<ProductsType>;
 
 const SinglePageProduct = ({
+  id,
   title,
   description,
   image,
   price,
   rating,
+  category,
 }: SingleProductPageProps) => {
+  const { cartItems, addToCart } = useCartContext();
   const [quantity, setQuantity] = useState(1);
+
+  useEffect(() => {
+    setQuantity(1);
+  }, []);
+
+  const handleAddToCart = () => {
+    const itemToAdd = {
+      id,
+      category,
+      title,
+      image,
+      price,
+      quantity,
+    };
+    addToCart(itemToAdd);
+  };
 
   const handleDecrement = () => {
     if (quantity > 1) {
@@ -43,15 +63,18 @@ const SinglePageProduct = ({
           <p className="text-sm">{description}</p>
         </div>
         <div className="w-full flex flex-col gap-y-3">
-          <div className="flex gap-x-[10px]">
-            <div className="w-1/3 h-full">
-              <QuantityInput
-                quantity={quantity}
-                onIncrement={handleIncrement}
-                onDecrement={handleDecrement}
-              />
-            </div>
-            <button className="grow btn btn-primary">ADD TO CART</button>
+          <div className="grid grid-cols-3 gap-x-[10px]">
+            <QuantityInput
+              quantity={quantity}
+              onIncrement={handleIncrement}
+              onDecrement={handleDecrement}
+            />
+            <button
+              className="col-span-2 btn btn-primary"
+              onClick={handleAddToCart}
+            >
+              ADD TO CART
+            </button>
           </div>
           <button className="w-full btn btn-outline btn-secondary">
             BUY NOW

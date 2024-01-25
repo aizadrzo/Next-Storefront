@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import { twMerge } from "tailwind-merge";
 import { Navbar } from "@/components";
-
-const inter = Inter({ subsets: ["latin"] });
+import { CartProvider } from "./Context/store";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,14 +15,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={twMerge(
-          "mx-auto max-w-[1110px] px-5 min-h-screen flex flex-col",
-          inter.className
-        )}
-      >
-        <Navbar />
-        {children}
+      <body className="mx-auto max-w-[1110px] px-5 min-h-screen flex flex-col">
+        <CartProvider>
+          <Navbar />
+          {children}
+        </CartProvider>
       </body>
     </html>
   );
