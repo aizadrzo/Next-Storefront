@@ -13,6 +13,6 @@ export type ProductsType = {
   rating: RatingType;
 };
 
-export type CartItemType = Omit<ProductsType[], "rating" | "description"> & {
-  quantity?: number;
+export type CartItemType = Omit<ProductsType, "rating" | "description"> & {
+  quantity: number;
 };
