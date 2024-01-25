@@ -22,8 +22,6 @@ const SinglePageProduct = ({
     setQuantity(1);
   }, []);
 
-  console.log(cartItems);
-
   const handleAddToCart = () => {
     const itemToAdd = {
       id,
@@ -65,15 +63,16 @@ const SinglePageProduct = ({
           <p className="text-sm">{description}</p>
         </div>
         <div className="w-full flex flex-col gap-y-3">
-          <div className="flex gap-x-[10px]">
-            <div className="w-1/3 h-full">
-              <QuantityInput
-                quantity={quantity}
-                onIncrement={handleIncrement}
-                onDecrement={handleDecrement}
-              />
-            </div>
-            <button className="grow btn btn-primary" onClick={handleAddToCart}>
+          <div className="grid grid-cols-3 gap-x-[10px]">
+            <QuantityInput
+              quantity={quantity}
+              onIncrement={handleIncrement}
+              onDecrement={handleDecrement}
+            />
+            <button
+              className="col-span-2 btn btn-primary"
+              onClick={handleAddToCart}
+            >
               ADD TO CART
             </button>
           </div>

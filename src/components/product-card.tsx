@@ -22,8 +22,6 @@ const ProductCard = ({
     addToCart(itemToAdd);
   };
 
-  console.log(cartItems);
-
   return (
     <div className="w-full card">
       <div className="border border-base-300 aspect-square grid place-content-center">
