@@ -1,9 +1,7 @@
 "use client";
 
 import { PropsWithChildren, createContext, useContext, useState } from "react";
-import { ProductsType } from "@/types/hooks.types";
-
-type CartItemType = Omit<ProductsType[], "rating" | "description">;
+import { ProductsType, CartItemType } from "@/types/hooks.types";
 
 type CartContextType = {
   cartItems: CartItemType | undefined;
@@ -23,7 +21,19 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
   const [cartItems, setCartItems] = useState<CartContextType["cartItems"]>([]);
 
   const addToCart = (item: CartItemType) => {
-    setCartItems((prevItems) => [...prevItems, item]);
+    const existingProductIndex = cartItems?.findIndex(
+      (cartItem) => cartItem.id === item.id
+    );
+
+    if (existingProductIndex !== -1) {
+      // If the product already exists, update its quantity
+      const updatedCartItems = [...cartItems];
+      updatedCartItems[existingProductIndex].quantity += item.quantity;
+      setCartItems(updatedCartItems);
+    } else {
+      // If the product doesn't exist, add a new item
+      setCartItems((prevItems) => [...prevItems, item]);
+    }
   };
 
   const removeFromCart = (productId: ProductsType["id"]) => {
