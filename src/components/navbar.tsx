@@ -1,8 +1,12 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import { useCartContext } from "@/app/Context/store";
 
 const Navbar = () => {
+  const { cartItems } = useCartContext();
+  const emptyCart = cartItems?.length === 0;
+
   return (
     <nav className="navbar py-4 sm:py-8 bg-base-100 sticky top-0 z-10">
       <div className="navbar-start"></div>
@@ -12,7 +16,9 @@ const Navbar = () => {
       <div className="navbar-end">
         <Link href="/checkout">
           <div className="indicator">
-            <span className="indicator-item badge badge-xs badge-secondary py-1 rounded-full"></span>
+            {!emptyCart && (
+              <span className="indicator-item badge badge-xs badge-secondary py-1 rounded-full"></span>
+            )}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
