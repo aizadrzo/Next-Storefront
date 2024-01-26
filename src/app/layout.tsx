@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Navbar } from "@/components";
+import { Footer, Navbar } from "@/components";
 import { CartProvider } from "./Context/store";
 import "./globals.css";
 
@@ -18,8 +18,9 @@ export default function RootLayout({
       <body className="mx-auto max-w-[1110px] px-5 min-h-screen flex flex-col">
         <CartProvider>
           <Navbar />
-          {children}
+          <div className="grow">{children}</div>
         </CartProvider>
+        <Footer />
       </body>
     </html>
   );
