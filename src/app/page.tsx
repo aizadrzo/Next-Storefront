@@ -3,7 +3,7 @@ import { ProductCard } from "@/components";
 import { useFetchProducts } from "@/hooks";
 
 export default function Home() {
-  const { products, isLoading } = useFetchProducts();
+  const { products } = useFetchProducts();
 
   return (
     <main className="py-5">
@@ -16,7 +16,6 @@ export default function Home() {
             title={product?.title}
             price={product?.price}
             category={product?.category}
-            isLoading={isLoading}
           />
         ))}
       </div>

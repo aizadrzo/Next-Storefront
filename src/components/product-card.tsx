@@ -3,10 +3,9 @@ import React from "react";
 import Link from "next/link";
 import { ProductsType } from "@/types";
 import { useCartContext } from "@/app/Context/store";
+import { useFetchProducts } from "@/hooks";
 
-type ProductCardType = Omit<ProductsType, "rating" | "description"> & {
-  isLoading?: boolean;
-};
+type ProductCardType = Omit<ProductsType, "rating" | "description">;
 
 const ProductCard = ({
   category,
@@ -15,12 +14,28 @@ const ProductCard = ({
   id,
   price,
 }: ProductCardType) => {
-  const { cartItems, addToCart } = useCartContext();
+  const { isLoading } = useFetchProducts();
+  const { addToCart } = useCartContext();
 
   const handleAddToCart = () => {
     const itemToAdd = { id, category, title, image, price, quantity: 1 };
     addToCart(itemToAdd);
   };
+
+  if (isLoading) {
+    return (
+      <div className="w-full card h-[563px]">
+        <div className="aspect-square animate-pulse bg-base-300"></div>
+        <div className="card-body p-0 flex flex-col py-6">
+          <div className="bg-base-300 w-1/3 h-[14px]"></div>
+          <div className="h-20 bg-base-300 animate-pulse"></div>
+          <div className="mt-auto card-action">
+            <div className="animate-pulse bg-base-300 h-12"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full card">

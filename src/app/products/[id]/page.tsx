@@ -8,9 +8,9 @@ type ProductPage = {
 };
 
 const ProductPage = ({ params }: ProductPage) => {
-  const { singleProduct } = useFetchSingleProduct({ id: params.id });
+  const { singleProduct, isLoading } = useFetchSingleProduct({ id: params.id });
   return (
-    <main className="grid place-content-center py-5">
+    <main className="grid py-5">
       <SinglePageProduct
         id={singleProduct?.id}
         image={singleProduct?.image}
@@ -19,6 +19,7 @@ const ProductPage = ({ params }: ProductPage) => {
         price={singleProduct?.price}
         rating={singleProduct?.rating}
         category={singleProduct?.category}
+        isLoading={isLoading}
       />
     </main>
   );
