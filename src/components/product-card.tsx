@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ProductsType } from "@/types";
 import { useCartContext } from "@/app/Context/store";
 import { useFetchProducts } from "@/hooks";
+import { formatMoney } from "@/app/utils";
 
 type ProductCardType = Omit<ProductsType, "rating" | "description">;
 
@@ -52,7 +53,7 @@ const ProductCard = ({
               {title}
             </h1>
           </Link>
-          <h3 className="pt-5 text-base font-semibold">${price}</h3>
+          <h3 className="pt-5 text-base font-semibold">{formatMoney(price)}</h3>
         </div>
         <div className="mt-auto card-actions">
           <button

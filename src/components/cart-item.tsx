@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useCartContext } from "@/app/Context/store";
 import { CartItemType } from "@/types";
 import { QuantityInput } from ".";
+import { formatMoney } from "@/app/utils";
 
 const CartItem = ({
   id,
@@ -37,7 +38,7 @@ const CartItem = ({
           </h1>
         </Link>
         <p className="text-sm md:text-base text-neutral-500">
-          Price: ${price * quantity}
+          {`Price: ${formatMoney(price * quantity)}`}
         </p>
         <button
           onClick={() => removeFromCart(id)}
