@@ -3,7 +3,7 @@ import React from "react";
 
 const Footer = () => (
   <section className="py-10 px-8 bg-base-300 text-base-content">
-    <footer className="footer grid grid-cols-2 lg:grid-cols-5 gap-4 mx-auto max-w-[1110px] px-5">
+    <footer className="footer grid grid-cols-2 lg:grid-cols-5 gap-10 mx-auto max-w-[1110px]">
       <aside className="col-span-2 lg:col-span-3">
         <h2 className="footer-title">Aizad Ridzo</h2>
         <p className="lg:w-2/3">
