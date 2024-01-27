@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { useCartContext } from "@/app/Context/store";
-import { CartItemType } from "@/types/hooks.types";
+import { CartItemType } from "@/types";
 import { QuantityInput } from ".";
 
 const CartItem = ({

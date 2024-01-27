@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { ProductsType } from "@/types/hooks.types";
+import { ProductsType } from "@/types";
 import { useCartContext } from "@/app/Context/store";
 
 type ProductCardType = Omit<ProductsType, "rating" | "description"> & {

@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { QuantityInput } from ".";
-import { ProductsType } from "@/types/hooks.types";
+import { CartItemType, ProductsType } from "@/types";
 import { useCartContext } from "@/app/Context/store";
 
 type SingleProductPageProps = Partial<ProductsType>;
@@ -31,7 +31,7 @@ const SinglePageProduct = ({
       price,
       quantity,
     };
-    addToCart(itemToAdd);
+    addToCart(itemToAdd as CartItemType);
   };
 
   const handleDecrement = () => {
