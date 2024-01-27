@@ -4,7 +4,7 @@ import { PropsWithChildren, createContext, useContext, useState } from "react";
 import { ProductsType, CartItemType } from "@/types";
 
 type CartContextType = {
-  cartItems: CartItemType | undefined;
+  cartItems: CartItemType[];
   addToCart: (item: CartItemType) => void;
   removeFromCart: (productId: ProductsType["id"]) => void;
   updateQuantity: (productId: ProductsType["id"], newQuantity: number) => void;

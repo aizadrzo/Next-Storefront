@@ -83,6 +83,7 @@ const SinglePageProduct = ({
       <div className="space-y-12">
         <div className="space-y-5">
           <h1 className="uppercase text-xl font-bold">{title}</h1>
+          <p>{rating?.rate}</p>
           <p>{rating?.count}</p>
           <h2 className="text-2xl font-semibold">{formatMoney(price)}</h2>
           <p className="text-sm">{description}</p>
