@@ -1,8 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { QuantityInput } from ".";
-import { ProductsType } from "@/types/hooks.types";
+import { CartItemType, ProductsType } from "@/types";
 import { useCartContext } from "@/app/Context/store";
+import { formatMoney } from "@/app/utils";
 
 type SingleProductPageProps = Partial<ProductsType> & { isLoading?: boolean };
 
@@ -32,7 +33,7 @@ const SinglePageProduct = ({
       price,
       quantity,
     };
-    addToCart(itemToAdd);
+    addToCart(itemToAdd as CartItemType);
   };
 
   const handleDecrement = () => {
@@ -82,8 +83,9 @@ const SinglePageProduct = ({
       <div className="space-y-12">
         <div className="space-y-5">
           <h1 className="uppercase text-xl font-bold">{title}</h1>
+          <p>{rating?.rate}</p>
           <p>{rating?.count}</p>
-          <h2 className="text-2xl font-semibold">$ {price}</h2>
+          <h2 className="text-2xl font-semibold">{formatMoney(price ?? 0)}</h2>
           <p className="text-sm">{description}</p>
         </div>
         <div className="w-full flex flex-col gap-y-3">

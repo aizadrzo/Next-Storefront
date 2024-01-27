@@ -1,10 +1,10 @@
 "use client";
 
 import { PropsWithChildren, createContext, useContext, useState } from "react";
-import { ProductsType, CartItemType } from "@/types/hooks.types";
+import { ProductsType, CartItemType } from "@/types";
 
 type CartContextType = {
-  cartItems: CartItemType | undefined;
+  cartItems: CartItemType[];
   addToCart: (item: CartItemType) => void;
   removeFromCart: (productId: ProductsType["id"]) => void;
   updateQuantity: (productId: ProductsType["id"], newQuantity: number) => void;
@@ -28,12 +28,10 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     );
 
     if (existingProductIndex !== -1) {
-      // If the product already exists, update its quantity
       const updatedCartItems = [...cartItems];
       updatedCartItems[existingProductIndex].quantity += item.quantity;
       setCartItems(updatedCartItems);
     } else {
-      // If the product doesn't exist, add a new item
       setCartItems((prevItems) => [...prevItems, item]);
     }
   };
