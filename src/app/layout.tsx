@@ -16,10 +16,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="mx-auto max-w-[1110px] px-5 min-h-screen flex flex-col">
+      <body className="min-h-screen flex flex-col">
         <CartProvider>
           <Navbar />
-          <div className="grow">{children}</div>
+          <div className="grow mx-auto max-w-[1110px] px-5">{children}</div>
         </CartProvider>
         <Footer />
       </body>

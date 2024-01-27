@@ -8,7 +8,7 @@ const Navbar = () => {
   const emptyCart = cartItems?.length === 0;
 
   return (
-    <nav className="navbar py-4 sm:py-8 bg-base-100 sticky top-0 z-10">
+    <nav className="mx-auto max-w-[1110px] px-5 navbar py-4 sm:py-8 bg-base-100 sticky top-0 z-10">
       <div className="navbar-start"></div>
       <Link href="/">
         <h1 className="navbar-center text-xl font-bold">Random Store</h1>
