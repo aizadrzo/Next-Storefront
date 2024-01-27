@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ProductsType } from "@/types/hooks.types";
+import { ProductsType } from "@/types";
 
 const useFetchProducts = () => {
   const [products, setProducts] = useState<ProductsType[] | undefined>([]);

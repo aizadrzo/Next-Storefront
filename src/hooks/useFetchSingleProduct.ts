@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ProductsType } from "@/types/hooks.types";
+import { ProductsType } from "@/types";
 
 const useFetchSingleProduct = ({ id }: { id: string }) => {
   const [singleProduct, setSingleProduct] = useState<

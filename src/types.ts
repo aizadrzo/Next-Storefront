@@ -1,6 +1,6 @@
 type RatingType = {
   count: number;
-  price: number;
+  rate: number;
 };
 
 export type ProductsType = {

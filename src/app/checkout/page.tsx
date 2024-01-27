@@ -2,6 +2,7 @@
 import React from "react";
 import { useCartContext } from "../Context/store";
 import { CartItem, EmptyCart } from "@/components";
+import { formatMoney } from "../utils";
 
 const Checkout = () => {
   const { cartItems, getTotal } = useCartContext();
@@ -33,7 +34,7 @@ const Checkout = () => {
             <div className="flex justify-between items-center">
               <h2 className="text-sm lg:text-base">Subtotal</h2>
               <h2 className="text-sm lg:text-base text-neutral-500">
-                ${totalAmount}
+                {formatMoney(totalAmount)}
               </h2>
             </div>
             <div className="flex justify-end gap-y-[10px]">
