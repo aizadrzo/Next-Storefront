@@ -117,7 +117,7 @@ const SinglePageProduct = ({
                   />
                 </svg>
               ))}
-              <p className="text-sm lg:text-base">{`(${rating?.count})`}</p>
+              <p className="text-sm lg:text-base text-neutral-500 font-light">{`(${rating?.count})`}</p>
             </div>
           )}
           <h2 className="text-2xl font-semibold">{formatMoney(price ?? 0)}</h2>
