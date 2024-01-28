@@ -39,17 +39,23 @@ const ProductCard = ({
   }
 
   return (
-    <div className="w-full card">
-      <div className="border border-base-300 aspect-square grid place-content-center">
-        <img src={image} alt={title} className="w-auto h-64 md:h-52 lg:h-36" />
-      </div>
+    <div className="w-full card group">
+      <Link href={`products/${id}`}>
+        <div className="group-hover:cursor-pointer border border-base-300 aspect-square grid place-content-center">
+          <img
+            src={image}
+            alt={title}
+            className="w-auto h-64 md:h-52 lg:h-36"
+          />
+        </div>
+      </Link>
       <div className="card-body p-0 flex flex-col">
         <div className="py-5">
           <small className="text-xs text-base-content uppercase">
             {category}
           </small>
           <Link href={`products/${id}`}>
-            <h1 className="card-title font-bold link link-hover underline-offset-1">
+            <h1 className="group-hover:link card-title font-bold underline-offset-1">
               {title}
             </h1>
           </Link>
