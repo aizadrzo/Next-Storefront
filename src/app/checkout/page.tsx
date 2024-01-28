@@ -3,11 +3,13 @@ import React from "react";
 import { useCartContext } from "../Context/store";
 import { CartItem, EmptyCart } from "@/components";
 import { formatMoney } from "../utils";
+import { useRouter } from "next/navigation";
 
 const Checkout = () => {
   const { cartItems, getTotal } = useCartContext();
   const emptyCart = cartItems?.length === 0;
   const totalAmount = getTotal();
+  const router = useRouter();
 
   if (emptyCart) {
     return <EmptyCart />;
@@ -42,8 +44,14 @@ const Checkout = () => {
                 Taxes and shipping calculated at checkout
               </h2>
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col gap-y-[10px]">
               <button className="btn btn-primary">Checkout</button>
+              <button
+                className="btn btn-outline"
+                onClick={() => router.push("/")}
+              >
+                View Products
+              </button>
             </div>
           </div>
         </div>
