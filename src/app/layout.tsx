@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Navbar } from "@/components";
+import { Footer, Navbar } from "@/components";
 import { CartProvider } from "./Context/store";
 import type { Metadata } from "next";
 import "./globals.css";
@@ -16,11 +16,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="mx-auto max-w-[1110px] px-5 min-h-screen flex flex-col">
+      <body className="min-h-screen flex flex-col">
         <CartProvider>
           <Navbar />
-          {children}
+          <div className="grow mx-auto max-w-[1110px] px-5">{children}</div>
         </CartProvider>
+        <Footer />
       </body>
     </html>
   );

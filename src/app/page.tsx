@@ -6,7 +6,7 @@ export default function Home() {
   const { products } = useFetchProducts();
 
   return (
-    <main className="py-5">
+    <main className="pt-5 pb-10">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {products?.map((product) => (
           <ProductCard

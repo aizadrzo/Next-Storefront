@@ -9,7 +9,7 @@ type ProductPage = {
 
 const ProductPage = ({ params }: ProductPage) => {
   const { singleProduct, isLoading } = useFetchSingleProduct({ id: params.id });
-  console.log(singleProduct);
+
   return (
     <main className="grid py-5">
       <SinglePageProduct
