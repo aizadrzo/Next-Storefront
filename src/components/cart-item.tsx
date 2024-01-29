@@ -15,8 +15,12 @@ const CartItem = ({
   const { removeFromCart, updateQuantity } = useCartContext();
 
   const handleDecrement = () => {
-    if (quantity > 1) {
+    if (quantity > 0) {
       updateQuantity(id, quantity - 1);
+    }
+
+    if (quantity === 1) {
+      removeFromCart(id);
     }
   };
 
