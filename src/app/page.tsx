@@ -1,18 +1,9 @@
 import { ProductCard } from "@/components";
 import { ProductsType } from "@/types";
-
-async function getData() {
-  const res = await fetch("https://fakestoreapi.com/products");
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-
-  return res.json();
-}
+import { getAllProducts } from "@/lib/getAllProducts";
 
 export default async function Home() {
-  const products: ProductsType[] = await getData();
+  const products: ProductsType[] = await getAllProducts();
 
   return (
     <main className="pt-5 pb-10">
