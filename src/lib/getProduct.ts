@@ -1,4 +1,4 @@
-export async function getProduct(id: string) {
+export const getProduct = async (id: string) => {
   const res = await fetch(`https://fakestoreapi.com/products/${id}`);
 
   if (!res.ok) {
@@ -6,4 +6,4 @@ export async function getProduct(id: string) {
   }
 
   return res.json();
-}
+};

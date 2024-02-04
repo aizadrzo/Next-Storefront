@@ -59,29 +59,6 @@ const SinglePageProduct = ({
     }
   };
 
-  // if (isLoading) {
-  //   return (
-  //     <div className="grid grid-cols-1 md:grid-cols-2 gap-[60px] items-start">
-  //       <div className="animate-pulse bg-base-300 aspect-square p-10 lg:p-20 flex items-center justify-center w-full lg:w-[544px] h-auto"></div>
-  //       <div className="space-y-12">
-  //         <div className="space-y-5">
-  //           <h1 className="animate-pulse bg-base-300 h-7 w-2/3"></h1>
-  //           <p className="bg-base-300 animate-pulse h-6"></p>
-  //           <h2 className="animate-pulse bg-base-300 h-8 w-1/3"></h2>
-  //           <h2 className="animate-pulse bg-base-300 h-[100px]"></h2>
-  //         </div>
-  //         <div className="w-full flex flex-col gap-y-3">
-  //           <div className="grid grid-cols-3 gap-x-[10px]">
-  //             <div className="animate-pulse bg-base-300 h-12"></div>
-  //             <div className="animate-pulse col-span-2 bg-base-300 h-12"></div>
-  //           </div>
-  //           <div className="animate-pulse w-full bg-base-300 h-12"></div>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   );
-  // }
-
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-[60px] items-start">
       <div className="border border-base-300 aspect-square p-10 lg:p-20 flex items-center justify-center">

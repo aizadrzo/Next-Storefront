@@ -1,4 +1,5 @@
-export async function getAllProducts() {
+export const getAllProducts = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 3000));
   const res = await fetch("https://fakestoreapi.com/products");
 
   if (!res.ok) {
@@ -6,4 +7,4 @@ export async function getAllProducts() {
   }
 
   return res.json();
-}
+};
