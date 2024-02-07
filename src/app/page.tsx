@@ -1,9 +1,9 @@
-"use client";
 import { ProductCard } from "@/components";
-import { useFetchProducts } from "@/hooks";
+import { ProductsType } from "@/types";
+import { getAllProducts } from "@/lib/getAllProducts";
 
-export default function Home() {
-  const { products } = useFetchProducts();
+export default async function Home() {
+  const products: ProductsType[] = await getAllProducts();
 
   return (
     <main className="pt-5 pb-10">

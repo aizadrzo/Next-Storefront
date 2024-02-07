@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { ProductsType } from "@/types";
 import { useCartContext } from "@/app/Context/store";
-import { useFetchProducts } from "@/hooks";
 import { formatMoney } from "@/app/utils";
 
 type ProductCardType = Omit<ProductsType, "rating" | "description">;
@@ -15,7 +14,6 @@ const ProductCard = ({
   id,
   price,
 }: ProductCardType) => {
-  const { isLoading } = useFetchProducts();
   const { addToCart } = useCartContext();
   const [showNotification, setShowNotification] = useState(false);
 
@@ -27,21 +25,6 @@ const ProductCard = ({
       setShowNotification(false);
     }, 3000);
   };
-
-  if (isLoading) {
-    return (
-      <div className="w-full card h-[563px]">
-        <div className="aspect-square animate-pulse bg-base-300"></div>
-        <div className="card-body p-0 flex flex-col py-6">
-          <div className="bg-base-300 w-1/3 h-[14px]"></div>
-          <div className="h-20 bg-base-300 animate-pulse"></div>
-          <div className="mt-auto card-action">
-            <div className="animate-pulse bg-base-300 h-12"></div>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="w-full card group">

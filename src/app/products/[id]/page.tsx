@@ -1,14 +1,13 @@
-"use client";
-import React from "react";
 import { SinglePageProduct } from "@/components";
-import { useFetchSingleProduct } from "@/hooks";
+import { ProductsType } from "@/types";
+import { getProduct } from "@/lib/getProduct";
 
 type ProductPage = {
   params: { id: string };
 };
 
-const ProductPage = ({ params }: ProductPage) => {
-  const { singleProduct, isLoading } = useFetchSingleProduct({ id: params.id });
+const ProductPage = async ({ params: { id } }: ProductPage) => {
+  const singleProduct: ProductsType = await getProduct(id);
 
   return (
     <main className="grid py-5">
@@ -20,7 +19,6 @@ const ProductPage = ({ params }: ProductPage) => {
         price={singleProduct?.price}
         rating={singleProduct?.rating}
         category={singleProduct?.category}
-        isLoading={isLoading}
       />
     </main>
   );
